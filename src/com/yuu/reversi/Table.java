@@ -43,11 +43,8 @@ public class Table {
             showTable();
             Stone secondPlayerStone = setStone(secondPlayer, scan);
             if(secondPlayerStone.getPlace()[0] <= -1 || firstPlayerStone.getPlace()[1] <= -1){
-                System.out.println("a");
                 passCount++;
             }else{
-                System.out.println("b");
-                System.out.println(secondPlayerStone.getPlace()[0]);
                 passCount = 0;
                 secondPlayer.putStone(table, secondPlayerStone);
                 changeTable(secondPlayer, secondPlayerStone, table);
@@ -74,11 +71,6 @@ public class Table {
         Stone stone;
         while(true){
             ArrayList<ArrayList<Integer>> allowPos = checkPerfect(player);
-//            for(int i = 0; i < allowPos.size(); i++){
-//                for(int j = 0; j < allowPos.get(i).size(); j++){
-//                    System.out.println(allowPos.get(i).get(j));
-//                }
-//            }
             if(allowPos.isEmpty()){
                 System.out.println("置く場所がありません");
                 Stone emptyStone = new Stone(new int[]{-1, -1});
@@ -88,22 +80,6 @@ public class Table {
             int PlayerX = scan.nextInt();
             System.out.println(player.getName() + "の石のy座標を入力してください！");
             int PlayerY = scan.nextInt();
-
-//            for(int i = 0; i < allowPos.length; i++){
-//                for(int j = 0; j < allowPos[i].length; j++){
-//                    System.out.println(allowPos[i][j]);
-//                }
-//            }
-//
-//            boolean allow = false;
-//            for(int i = 0; i < allowPos.length; i++){
-//                if(allowPos[i][1] == PlayerX-1 && allowPos[i][0] == PlayerY-1){
-//                    allow = true;
-//                    break;
-//                }else{
-//                    allow = false;
-//                }
-//            }
 
             boolean allow = false;
             for(int i = 0; i < allowPos.size(); i++){
@@ -130,23 +106,11 @@ public class Table {
     }
 
     public void showTable(){
-        String[][] newTable = new String[table.length][table[0].length];
-        for(int i = 0; i < table.length; i++){
-            for(int j = 0; j < table[i].length; j++){
-                if(table[i][j] == 1){
-                    newTable[i][j] = "〇";
-                }else if(table[i][j] == 2){
-                    newTable[i][j] = "●";
-                }else{
-                    newTable[i][j] = " ";
-                }
-            }
-        }
         System.out.println("---------------------------------");
-        for(int i = 0; i < newTable.length; i++){
+        for(int i = 0; i < table.length; i++){
             System.out.print("|");
-            for(int j = 0; j < newTable[0].length; j++){
-                System.out.print(" " + newTable[i][j] + " |");
+            for(int j = 0; j < table[0].length; j++){
+                System.out.print(" " + table[i][j] + " |");
             }
             System.out.println("");
             System.out.println("---------------------------------");
@@ -385,14 +349,6 @@ public class Table {
                 allList.add(diagonalAppendList);
             }
         }
-
-//        int[][] allLineArray = new int[allList.size()][2];
-//        for(int i = 0; i < allList.size(); i++){
-//            for(int j = 0; j < allList.get(i).size(); j++){
-//                System.out.println(allList.get(i).get(j));
-//                allLineArray[i][j] = allList.get(i).get(j);
-//            }
-//        }
         return allList;
     }
 
